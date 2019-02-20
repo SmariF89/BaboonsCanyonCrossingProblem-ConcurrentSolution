@@ -1,7 +1,5 @@
 // Started 14.02.19
-
-// Núverandi kenning: Þarf að nota weightLock til að stöðva keyrslu alveg þangað til
-//					  að hægt er að hleypa næsta yfir.
+// Ended   20.02.19
 
 package main
 
