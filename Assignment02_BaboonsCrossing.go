@@ -15,11 +15,12 @@ import (
 var debug = true
 
 // Split binary semaphore
+// One for each condition
 var signalEastMale = s.Make(0)
 var signalEastFemale = s.Make(0)
 var signalWestMale = s.Make(0)
 var signalWestFemale = s.Make(0)
-var weightLock = s.Make(0)
+var weightLock = s.Make(0) // OBSOLETE
 var e = s.Make(1)
 
 // Change this variable as needed
@@ -97,7 +98,6 @@ func eastHeadingBaboon(gender int) {
 			ropeWeight += femaleWeight
 		}
 
-		// Climbing over
 		if gender == 0 {
 			fmt.Printf("[East][Male][westHeaded:%d][eastHeaded:%d][delayedWest:%d][delayedEast:%d][ropeWeight:%d]\n", westHeadingCount, eastHeadingCount, delayedWestHeading, delayedEastHeading, ropeWeight)
 		} else if gender == 1 {
@@ -106,6 +106,7 @@ func eastHeadingBaboon(gender int) {
 
 		SIGNAL()
 
+		// Climbing over
 		if debug {
 			if westHeadingCount > 0 {
 				fmt.Println("EAST: Collision!")
@@ -162,7 +163,6 @@ func westHeadingBaboon(gender int) {
 			ropeWeight += femaleWeight
 		}
 
-		// Climbing over
 		if gender == 0 {
 			fmt.Printf("[West][Male][westHeaded:%d][eastHeaded:%d][delayedWest:%d][delayedEast:%d][ropeWeight:%d]\n", westHeadingCount, eastHeadingCount, delayedWestHeading, delayedEastHeading, ropeWeight)
 		} else if gender == 1 {
@@ -171,6 +171,7 @@ func westHeadingBaboon(gender int) {
 
 		SIGNAL()
 
+		// Climbing over
 		if debug {
 			if eastHeadingCount > 0 {
 				fmt.Println("WEST: Collision!")
@@ -279,15 +280,3 @@ func SIGNAL() {
 		// fmt.Println("Case03")
 	}
 }
-
-// func SIGNAL_OLD() {
-// 	if westHeadingCount == 0 && delayedEastHeading > 0 {
-// 		delayedEastHeading--
-// 		signalEast.Release(1)
-// 	} else if eastHeadingCount == 0 && delayedWestHeading > 0 {
-// 		delayedWestHeading--
-// 		signalWest.Release(1)
-// 	} else {
-// 		e.Release(1)
-// 	}
-// }
