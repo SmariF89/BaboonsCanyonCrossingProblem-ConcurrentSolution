@@ -1,5 +1,5 @@
 # CADP - Project 02
-## Baboons' canyon crossing.
+## Baboons' canyon crossing
 
 A concurrent implementation of the famous Baboons' canyon crossing problem.
 
