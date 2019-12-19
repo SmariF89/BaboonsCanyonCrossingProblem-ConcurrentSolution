@@ -4,7 +4,7 @@
 A concurrent implementation of the famous Baboons' canyon crossing problem.
 
 This is my solution to the problem. It was a project in the course Concurrent and Distributed Programming in Reykjavik University.
-It took two weeks to perfect. 
+It took two weeks to perfect. I used passing the baton technique.
 
 It takes the following concurrency features into account:
 
